@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Genesys Beacons</string>
+    <string name="scan_for_beacons">show local workforce</string>
+
+    <string-array name="spoken_beacon_names">
+        <item>beacon 1</item>
+        <item>beacon 2</item>
+    </string-array>
+    
+    <!-- Menu item strings. -->
+    <string name="read_aloud">Read aloud</string>
+    <string name="stop">Stop</string>
+
+</resources>
