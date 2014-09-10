@@ -1,0 +1,65 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.genesys.beacon"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="com.google.android.glass.permission.DEVELOPMENT" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+	    <service 
+	        android:enabled="true"
+	        android:exported="true"
+	        android:isolatedProcess="false"
+	        android:label="iBeacon"
+	        android:name="org.altbeacon.beacon.service.BeaconService">
+	    </service>
+
+	    <service android:enabled="true"
+	        android:name="org.altbeacon.beacon.BeaconIntentProcessor">
+	    </service>
+
+<!--         <activity
+            android:name="com.genesys.beacon.handheld.RangingDemoActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>            
+        </activity> -->
+        
+        <activity
+            android:name="com.genesys.beacon.glass.MenuActivity"
+            android:theme="@style/MenuTheme" />
+ 
+        <service
+            android:name="com.genesys.beacon.glass.GlassService"
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_scan"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+            </intent-filter>
+            <meta-data
+                android:name="com.google.android.glass.VoiceTrigger"
+                android:resource="@xml/beacon_scan" />
+        </service>
+
+    </application>
+
+</manifest>
